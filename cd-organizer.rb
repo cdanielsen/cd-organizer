@@ -1,14 +1,13 @@
 require './lib/cd'
-require 'pry'
 
 def main_menu
 	system 'clear'
 	image
-	puts "Welcome to the Low Tech CD Organizer!\n\n"
+	puts "Welcome to the l0W tE<# CD Organizer!\n\n"
 	puts "A << Add a CD"
 	puts "L << List all your CD's"
 	puts "N << List all the artists in your collection"
-	puts "SA << Search for all albums by an artist"
+	puts "SA << List all albums by an artist"
 	puts "ST << Search for a matching album title"
 	puts "X << Exit!"
 	case gets.chomp.upcase
@@ -74,9 +73,21 @@ def artist_search
 		results.each_with_index { |result, index| puts "#{index + 1}. #{result.album}"}
 	else
 		puts "Artist not found, bro!"
-		sleep 2
 	end
-	puts ""
+	gets
+	main_menu
+end
+
+def album_search
+	puts "What album would you like to look for?"
+	album = gets.chomp.downcase
+	results = Cd.search_by_title(album)
+	if results != []
+		puts "The following albums match your search:\n\n"
+		results.each_with_index { |result, index| puts "#{index + 1}. #{result.album} -- #{result.artist}"}
+	else
+		puts "Album not found, bro!"
+	end
 	gets
 	main_menu
 end
