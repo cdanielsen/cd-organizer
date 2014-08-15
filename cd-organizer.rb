@@ -36,7 +36,7 @@ def add
 	album = gets.chomp
 	new_cd = Cd.new({album: album, artist: artist})
 	new_cd.save
-	puts "#{album} by #{artist} saved to the catalog!"
+	puts "\n\n#{album} by #{artist} saved to the catalog!\n\n"
 	puts "Add another? (Y/N)"
 	case gets.chomp.upcase
 	when 'Y'
