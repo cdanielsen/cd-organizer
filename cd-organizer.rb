@@ -52,11 +52,33 @@ end
 def all_cds
 	puts "Here are all the CD's in your collection:\n\n"
 	Cd.all.each { |cd| puts "#{cd.album} -- #{cd.artist}" }
+	puts ""
+	gets
+	main_menu
 end
 
 def all_artists
 	puts "Here are all the artists in your collection\n\n"
 	Cd.unique_artists.each { |artist| puts "#{artist}" }
+	puts ""
+	gets
+	main_menu
+end
+
+def artist_search
+	puts "What artist would you like to look for?"
+	artist = gets.chomp.downcase
+	results = Cd.allby_artist(artist)
+	if results != []
+		puts "Here are all the albums by that artist:\n\n"
+		results.each_with_index { |result, index| puts "#{index + 1}. #{result.album}"}
+	else
+		puts "Artist not found, bro!"
+		sleep 2
+	end
+	puts ""
+	gets
+	main_menu
 end
 
 def trippin

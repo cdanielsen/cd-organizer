@@ -19,7 +19,7 @@ class Cd
   def self.allby_artist artist
     albums = []
     self.all.each do |cd|
-      if cd.artist == artist
+      if cd.artist.downcase == artist
         albums << cd
       end
     end
