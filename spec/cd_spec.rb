@@ -31,4 +31,16 @@ describe 'Cd' do
       expect(Cd.all).to eq [test_cd1, test_cd2]
     end
   end
+
+  describe '.allby_artist' do
+    it 'returns a list of albums by the given artist' do
+      test_cd1 = Cd.new({album: 'Hello Nasty', artist: 'Beastie Boys'})
+      test_cd2 = Cd.new({album: 'Dig Your Own Hole', artist: 'Chemical Brothers'})
+      test_cd3 = Cd.new({album: 'Ill Communication', artist: 'Beastie Boys'})
+      test_cd1.save
+      test_cd2.save
+      test_cd3.save
+      expect(Cd.allby_artist('Beastie Boys')).to eq [test_cd1, test_cd3]
+    end
+  end
 end

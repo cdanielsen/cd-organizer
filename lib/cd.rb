@@ -15,5 +15,15 @@ class Cd
   def self.all
     @@cd_lib
   end
-  
+
+  def self.allby_artist artist
+  albums = []
+    self.all.each do |cd|
+      if cd.artist == artist
+        albums << cd
+      end
+    end
+  albums
+  end
+
 end
