@@ -48,6 +48,13 @@ def add
 	end
 end
 
+def all_cds
+	puts "Here are all the CD's in your collection:\n\n"
+	Cd.all.each do |cd|
+		puts "#{cd.album} -- #{cd.artist}"
+	end
+end
+
 def trippin
 	puts "You're trippin'..."
 	sleep 3
