@@ -26,4 +26,11 @@ class Cd
   albums
   end
 
+  def self.unique_artists
+    artist_names = []
+    self.all.each do |cd|
+      artist_names << cd.artist
+    end
+    artist_names.uniq.sort
+  end
 end
