@@ -1,4 +1,5 @@
 require './lib/cd'
+require 'pry'
 
 def main_menu
 	system 'clear'
@@ -50,9 +51,12 @@ end
 
 def all_cds
 	puts "Here are all the CD's in your collection:\n\n"
-	Cd.all.each do |cd|
-		puts "#{cd.album} -- #{cd.artist}"
-	end
+	Cd.all.each { |cd| puts "#{cd.album} -- #{cd.artist}" }
+end
+
+def all_artists
+	puts "Here are all the artists in your collection\n\n"
+	Cd.unique_artists.each { |artist| puts "#{artist}" }
 end
 
 def trippin
