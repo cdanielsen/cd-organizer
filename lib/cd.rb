@@ -17,13 +17,13 @@ class Cd
   end
 
   def self.allby_artist artist
-  albums = []
+    albums = []
     self.all.each do |cd|
       if cd.artist == artist
         albums << cd
       end
     end
-  albums
+    albums
   end
 
   def self.unique_artists
@@ -32,5 +32,15 @@ class Cd
       artist_names << cd.artist
     end
     artist_names.uniq.sort
+  end
+
+  def self.search_by_title title
+    albums = []
+    self.all.each do |cd|
+      if cd.album == title
+        albums << cd
+      end
+    end
+    albums
   end
 end
