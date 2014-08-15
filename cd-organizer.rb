@@ -29,8 +29,27 @@ def main_menu
 	end
 end
 
+def add
+	puts "What's the artist name?"
+	artist = gets.chomp
+	puts "What's the album title?"
+	album = gets.chomp
+	new_cd = Cd.new({album: album, artist: artist})
+	new_cd.save
+	puts "#{album} by #{artist} saved to the catalog!"
+	puts "Add another? (Y/N)"
+	case gets.chomp.upcase
+	when 'Y'
+		add
+	when 'N'
+		main_menu
+	else
+		trippin
+	end
+end
+
 def trippin
-	puts "Yo're trippin'..."
+	puts "You're trippin'..."
 	sleep 3
 	main_menu
 end
