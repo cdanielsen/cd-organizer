@@ -1,5 +1,6 @@
 require './lib/cd'
 require './lib/artist'
+require 'pry'
 
 def main_menu
 	system 'clear'
@@ -73,19 +74,19 @@ def all_artists
 	main_menu
 end
 
-# def artist_search
-# 	puts "What artist would you like to look for?"
-# 	artist = gets.chomp.downcase
-# 	results = Cd.allby_artist(artist)
-# 	if results != []
-# 		puts "Here are all the albums by that artist:\n\n"
-# 		results.each_with_index { |result, index| puts "#{index + 1}. #{result.album}"}
-# 	else
-# 		puts "Artist not found, bro!"
-# 	end
-# 	gets
-# 	main_menu
-# end
+def artist_search
+	puts "What artist would you like to look for?"
+	name = gets.chomp.downcase
+	index = Artist.all.index { |artist| artist.name.downcase == name }
+	if index == nil
+		puts "Artist not found, bro!"
+	else
+		puts "Here are all the albums by that artist:\n\n"
+		Artist.all[index].albums.each_with_index { |cd, i| puts "#{i + 1}. #{cd.album}"}
+	end
+	gets
+	main_menu
+end
 
 # def album_search
 # 	puts "What album would you like to look for?"
