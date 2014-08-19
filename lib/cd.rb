@@ -14,6 +14,7 @@ class Cd
   
   def self.all
     @@cd_lib.sort! { |a, b| a.artist.downcase <=> b.artist.downcase }
+    @@cd_lib
   end
 
   def self.allby_artist artist

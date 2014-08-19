@@ -3,10 +3,6 @@ require 'cd'
 
 describe 'Cd' do
 
-  before do
-     Cd.class_variable_set :@@cd_lib, []
-  end
-
   describe 'intialize' do
     it 'is initialized with an album name and an artist' do
       test_cd = Cd.new({album: 'Hello Nasty', artist: 'Beastie Boys'})
