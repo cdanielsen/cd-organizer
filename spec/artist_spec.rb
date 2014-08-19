@@ -36,22 +36,7 @@ describe Artist do
 			test_artist1.save
 			test_cd1.save
 			test_artist1.add_album(test_cd1)
-			expect(test_artist1.view_albums).to eq [test_cd1]
+			expect(test_artist1.albums).to eq [test_cd1]
 		end
 	end
-
-	describe '#view_albums' do
-		it 'shows all albums linked to an artist' do
-			test_artist1 = Artist.new({name: 'Beastie Boys'})
-			test_cd1 = Cd.new({album: 'Hello Nasty'})
-			test_cd2 = Cd.new({album: 'Ill Communication'})
-			test_artist1.save
-			test_cd1.save
-			test_cd2.save
-			test_artist1.add_album(test_cd1)
-			test_artist1.add_album(test_cd2)
-			expect(test_artist1.view_albums).to eq [test_cd1, test_cd2]
-		end
-	end
-
 end

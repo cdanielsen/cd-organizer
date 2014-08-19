@@ -19,7 +19,7 @@ class Cd
   def self.search_by_title title
     albums = []
     self.all.each do |cd|
-      if cd.album.downcase == title.downcase
+      if cd.album == title
         albums << cd
       end
     end

@@ -1,17 +1,16 @@
 require './lib/cd'
 require './lib/artist'
-require 'pry'
 
 def main_menu
 	system 'clear'
 	image
 	puts "Welcome to the l0W tE<# CD Organizer!\n\n"
-	puts "A << Add a CD"
-	puts "L << List all your CD's"
-	puts "N << List all the artists in your collection"
+	puts "A  << Add a CD"
+	puts "L  << List all your CD's"
+	puts "N  << List all the artists in your collection"
 	puts "SA << List all albums by an artist"
 	puts "ST << Search for a matching album title"
-	puts "X << Exit!"
+	puts "X  << Exit!"
 	case gets.chomp.upcase
 	when 'A'
 		add
@@ -33,14 +32,14 @@ end
 
 def add
 	puts "What's the artist name?"
-	name = gets.chomp
+	name = gets.chomp.downcase
 	puts "What's the album title?"
-	album = gets.chomp
+	album = gets.chomp.downcase
 	new_cd = Cd.new({album: album})
 	new_cd.save
 	new_artist = Artist.new({name: name})
-	if Artist.all.include? new_artist
-		index = Artist.all.index(new_artist)
+	index = Artist.all.index { |artist| artist.name == name }
+	if index != nil
 		Artist.all[index].add_album(new_cd)
 	else
 		new_artist.save
@@ -75,9 +74,9 @@ def all_artists
 end
 
 def artist_search
-	puts "What artist would you like to look for?"
+	puts "What artist would you like to see albums for?"
 	name = gets.chomp.downcase
-	index = Artist.all.index { |artist| artist.name.downcase == name }
+	index = Artist.all.index { |artist| artist.name == name }
 	if index == nil
 		puts "Artist not found, bro!"
 	else
@@ -88,19 +87,19 @@ def artist_search
 	main_menu
 end
 
-# def album_search
-# 	puts "What album would you like to look for?"
-# 	album = gets.chomp.downcase
-# 	results = Cd.search_by_title(album)
-# 	if results != []
-# 		puts "The following albums match your search:\n\n"
-# 		results.each_with_index { |result, index| puts "#{index + 1}. #{result.album} -- #{result.artist}"}
-# 	else
-# 		puts "Album not found, bro!"
-# 	end
-# 	gets
-# 	main_menu
-# end
+def album_search
+	puts "What album would you like to look for?"
+	album = gets.chomp.downcase
+	results = Cd.search_by_title(album)
+	if results != []
+		puts "The following albums match your search:\n\n"
+		results.each_with_index { |result, index| puts "#{index + 1}. #{result.album}"}
+	else
+		puts "Album not found, bro!"
+	end
+	gets
+	main_menu
+end
 
 def trippin
 	puts "You're trippin'..."
