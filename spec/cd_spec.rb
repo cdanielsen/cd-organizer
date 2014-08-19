@@ -4,15 +4,15 @@ require 'cd'
 describe 'Cd' do
 
   describe 'intialize' do
-    it 'is initialized with an album name and an artist' do
-      test_cd = Cd.new({album: 'Hello Nasty', artist: 'Beastie Boys'})
+    it 'is initialized with an album name' do
+      test_cd = Cd.new({album: 'Hello Nasty'})
       expect(test_cd).to be_a Cd
     end
   end
   
   describe '#save' do
-    it 'adds a new CD to an array' do
-      test_cd1 = Cd.new({album: 'Hello Nasty', artist: 'Beastie Boys'})
+    it 'saves a new CD to the collection' do
+      test_cd1 = Cd.new({album: 'Hello Nasty'})
       test_cd1.save
       expect(Cd.all).to eq [test_cd1]
     end
@@ -20,46 +20,20 @@ describe 'Cd' do
     
   describe '.all' do
     it 'lists all Cds in the collection' do
-      test_cd1 = Cd.new({album: 'Hello Nasty', artist: 'Beastie Boys'})
-      test_cd2 = Cd.new({album: 'Dig Your Own Hole', artist: 'Chemical Brothers'})
+      test_cd1 = Cd.new({album: 'Hello Nasty'})
+      test_cd2 = Cd.new({album: 'Dig Your Own Hole'})
       test_cd1.save
       test_cd2.save
-      expect(Cd.all).to eq [test_cd1, test_cd2]
-    end
-  end
-
-  describe '.allby_artist' do
-    it 'returns a list of albums by the given artist' do
-      test_cd1 = Cd.new({album: 'Hello Nasty', artist: 'Beastie Boys'})
-      test_cd2 = Cd.new({album: 'Dig Your Own Hole', artist: 'Chemical Brothers'})
-      test_cd3 = Cd.new({album: 'Ill Communication', artist: 'Beastie Boys'})
-      test_cd1.save
-      test_cd2.save
-      test_cd3.save
-      expect(Cd.allby_artist('Beastie Boys')).to eq [test_cd1, test_cd3]
-    end
-  end
-
-  describe '.unique_artists' do
-    it 'returns an alphabetized list of all unique artists' do
-      test_cd1 = Cd.new({album: 'Hello Nasty', artist: 'Beastie Boys'})
-      test_cd2 = Cd.new({album: 'Dookie', artist: 'Green Day'})
-      test_cd3 = Cd.new({album: 'Ill Communication', artist: 'Beastie Boys'})
-      test_cd4 = Cd.new({album: 'Dig Your Own Hole', artist: 'Chemical Brothers'})
-      test_cd1.save
-      test_cd2.save
-      test_cd3.save
-      test_cd4.save      
-      expect(Cd.unique_artists).to eq ['Beastie Boys', 'Chemical Brothers', 'Green Day']
+      expect(Cd.all).to eq [test_cd2, test_cd1]
     end
   end
 
   describe '.search_by_title' do
-    it 'returns an alphabetized list of all CDs matching a given title' do
-      test_cd1 = Cd.new({album: 'Greatest Hits', artist: 'Beastie Boys'})
-      test_cd2 = Cd.new({album: 'Dookie', artist: 'Green Day'})
-      test_cd3 = Cd.new({album: 'Ill Communication', artist: 'Beastie Boys'})
-      test_cd4 = Cd.new({album: 'Greatest Hits', artist: 'Chemical Brothers'})
+    it 'returns an alphabetized list of all CDs matching a given album title' do
+      test_cd1 = Cd.new({album: 'Greatest Hits'})
+      test_cd2 = Cd.new({album: 'Dookie'})
+      test_cd3 = Cd.new({album: 'Ill Communication'})
+      test_cd4 = Cd.new({album: 'Greatest Hits'})
       test_cd1.save
       test_cd2.save
       test_cd3.save

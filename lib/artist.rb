@@ -15,4 +15,6 @@ class Artist
 	def self.all
 		@@all_artists.sort! { |a, b| a.name.downcase <=> b.name.downcase }
 	end
+
+	
 end
