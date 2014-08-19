@@ -57,21 +57,21 @@ def add
 	end
 end
 
-# def all_cds
-# 	puts "Here are all the CD's in your collection:\n\n"
-# 	Cd.all.each { |cd| puts "#{cd.album} -- #{cd.artist}" }
-# 	puts ""
-# 	gets
-# 	main_menu
-# end
+def all_cds
+	puts "Here are all the CD's in your collection:\n\n"
+	Cd.all.each { |cd| puts "#{cd.album}" }
+	puts ""
+	gets
+	main_menu
+end
 
-# def all_artists
-# 	puts "Here are all the artists in your collection\n\n"
-# 	Cd.unique_artists.each { |artist| puts "#{artist}" }
-# 	puts ""
-# 	gets
-# 	main_menu
-# end
+def all_artists
+	puts "Here are all the artists in your collection\n\n"
+	Artist.all.each { |artist| puts "#{artist.name}" }
+	puts ""
+	gets
+	main_menu
+end
 
 # def artist_search
 # 	puts "What artist would you like to look for?"
