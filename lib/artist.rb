@@ -1,11 +1,12 @@
 class Artist
 
-	attr_reader :name
+	attr_reader :name, :albums
 
 	@@all_artists = []
 
 	def initialize attributes
 		@name = attributes[:name]
+		@albums = []
 	end
 
 	def save
@@ -16,5 +17,11 @@ class Artist
 		@@all_artists.sort! { |a, b| a.name.downcase <=> b.name.downcase }
 	end
 
-	
+	def add_album album
+		self.albums << album
+	end
+
+	def view_albums
+		self.albums
+	end
 end
