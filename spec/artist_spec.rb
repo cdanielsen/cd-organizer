@@ -39,4 +39,4 @@ describe Artist do
 			expect(test_artist1.albums).to eq [test_cd1]
 		end
 	end
-end
+end 

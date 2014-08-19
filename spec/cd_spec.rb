@@ -41,4 +41,4 @@ describe 'Cd' do
       expect(Cd.search_by_title('Greatest Hits')).to eq [test_cd1, test_cd4]
     end
   end
-end
+end 

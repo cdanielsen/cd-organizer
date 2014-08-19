@@ -18,5 +18,5 @@ Features:
 + List all albums by a given artist
 + Search for an album title
 + Sweet ASCII text
-
+ 
 Copyright MIT

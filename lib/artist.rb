@@ -20,4 +20,4 @@ class Artist
 	def add_album album
 		self.albums << album
 	end
-end
+end 

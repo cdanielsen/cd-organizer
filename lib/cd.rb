@@ -25,4 +25,4 @@ class Cd
     end
     albums
   end
-end
+end 

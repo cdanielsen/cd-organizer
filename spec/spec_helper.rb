@@ -7,4 +7,4 @@ RSpec.configure do |config|
 	Cd.class_variable_set :@@cd_lib, []
 	Artist.class_variable_set :@@all_artists, []
   end
-end
+end 
